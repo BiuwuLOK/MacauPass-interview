@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>樂嘉豪 Maximilian LOK - 澳門通數字金融價值實現方案參考</title>
+
+    <!--  -->
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0 auto;
+        max-width: 900px;
+        padding: 20px;
+        color: #333;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #2c3e50;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      ul {
+        list-style-type: disc;
+        margin-left: 20px;
+      }
+      li {
+        margin-bottom: 8px;
+      }
+      .job-responsibility {
+        background-color: #f9f9f9;
+        border-left: 5px solid #3498db;
+        padding: 15px;
+        margin-bottom: 30px;
+      }
+      .job-responsibility h3 {
+        margin-top: 0;
+        color: #3498db;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px auto 5px auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .image-caption {
+        text-align: center;
+        font-style: italic;
+        color: #555;
+        margin-bottom: 20px;
+        font-size: 0.9em;
+      }
+      .footer-note {
+        background-color: #ecf0f1;
+        border-left: 5px solid #e9e7b3;
+        padding: 10px 15px;
+        margin-top: 40px;
+        font-style: italic;
+        color: #555;
+      }
+
+      /* Dropdown styles for sections */
+      details.section {
+        /* Apply section styles directly to details */
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 10px;
+        margin-bottom: 15px;
+        background-color: #fcfcfc;
+        border-bottom: 1px solid #eee; /* Retain section's bottom border for separation */
+      }
+      details.section:last-of-type {
+        border-bottom: none;
+      }
+
+      /* 更精確地控制嵌套列表的縮進 */
+      details.section ul {
+        /* 針對 section 內部的第一層 ul */
+        padding-left: 20px; /* 或您希望的值 */
+        list-style-type: disc; /* 確保第一層列表點樣式 */
+      }
+      details.section ul ul {
+        /* 針對 section 內部的第二層 ul (子列表) */
+        padding-left: 20px; /* 或您希望的值，可以與第一層不同或相同 */
+        list-style-type: circle; /* 可以為子列表使用不同的列表點樣式 */
+      }
+      details.section ul ul ul {
+        /* 第三層，如果有的話 */
+        padding-left: 20px;
+        list-style-type: square;
+      }
+
+      details summary {
+        font-weight: bold;
+        cursor: pointer;
+        outline: none;
+        color: #34495e;
+        padding: 5px 0;
+      }
+      details summary::marker {
+        color: #3498db;
+      }
+      details summary:hover {
+        color: #2980b9;
+      }
+
+      /* Styles for nested image details */
+      details.image-container {
+        border: 1px solid #eee;
+        border-radius: 3px;
+        padding: 5px;
+        margin: 15px 0;
+        background-color: #fcfcfa;
+      }
+      details.image-container summary {
+        font-weight: bold;
+        font-size: 1em; /* Slightly smaller than section title */
+        color: #555;
+      }
+      details.image-container summary:hover {
+        color: #333;
+      }
+
+      details.subsection {
+        border: 1px solid #e0e0e0; /* 比 section 邊框淺一些 */
+        border-radius: 3px;
+        padding: 8px;
+        margin-top: 10px; /* 與上一個 subsection 或內容的間距 */
+        margin-bottom: 10px;
+        background-color: #fdfdfd; /* 比 section 背景淺或不同 */
+      }
+      details.subsection summary {
+        font-weight: bold;
+        font-size: 1.05em; /* 比 section summary 小一點 */
+        color: #4a5568; /* 與 section summary 顏色區分 */
+      }
+      details.subsection summary::marker {
+        color: #3498db; /* 標記顏色可以統一 */
+      }
+      details.subsection summary:hover {
+        color: #2c3e50;
+      }
+      details.subsection p,
+      details.subsection ul {
+        font-size: 0.95em; /* 內部文字可以略小 */
+      }
+
+      /* Specific CSS for the large LSTM image */
+      img[alt="LTSM 算法模型"] {
+        max-width: 80%; /* Reduce max-width for large image */
+        margin: 20px auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+    </style>
+    <!--  -->
+  </head>
+  <body>
+    <h1>澳門通數字金融價值實現方案 - 數據科學視角</h1>
+
+    <div class="job-responsibility">
+      <h3>基於數據科學工作職責的方案重點：</h3>
+      <ul>
+        <li>數據收集、整理、分析與挖掘： 提取有價值的業務洞察。</li>
+        <li>統計學與機器學習方法： 驗證假設和解決業務問題。</li>
+        <li>機器學習模型與深度學習算法： 設計、開發、優化與提升AI應用。</li>
+        <li>模型訓練、驗證與測試： 確保模型性能達標。</li>
+        <li>算法實現與部署： 解決具體業務挑戰。</li>
+        <li>最新技術研究與應用： 保持技術領先。</li>
+        <li>跨團隊協作： 確保AI解決方案有效整合與產品交付。</li>
+        <li>問題處理與解決： 確保AI驅動應用的可靠性和準確性。</li>
+        <li>知識分享與創新： 提升團隊能力。</li>
+      </ul>
+    </div>
+
+    <!-- MPay 用戶個性化推薦引擎 -->
+    <details class="section">
+      <summary><h2>1. MPay 用戶個性化推薦引擎</h2></summary>
+      <p>
+        此方案聚焦於透過數據分析與機器學習提升 MPay 平台的用戶參與度和商業價值。
+      </p>
+
+      <!-- 核心技術棧簡介 -->
+      <ul>
+        <li>
+          核心策略：通過收集、整理、分析用戶行為數據，挖掘用戶偏好與潛在需求，提取有價值的業務洞察。
+        </li>
+        <li>
+          模型設計與優化：應用協同過濾、矩陣分解、深度學習推薦模型（如DNN、Wide
+          &
+          Deep）等統計學和機器學習方法，設計並持續優化推薦模型。以確保推薦準確性和實時性。
+        </li>
+        <li>
+          算法實現與部署：確保推薦引擎能有效整合至 MPay
+          應用中，解決交易轉化率和客單價的業務。
+        </li>
+        <li>
+          價值實現：通過精準推薦提升交易轉化率、客單價及用戶粘性，間接創造經濟效益。同時，可為商戶提供付費推廣和數據洞察服務，實現直接營收。
+        </li>
+      </ul>
+
+      <!-- 新增的技術棧說明部分 -->
+      <!-- 原有的 “核心技術棧與開源參考” 部分 (已修正列表結構) -->
+      <details open class="section">
+        <summary><h3>核心技術棧與開源參考</h3></summary>
+        <p>
+          為實現高效個性化推薦引擎，驗證技術棧和參考行業內廣泛使用的開源項目：
+        </p>
+        <ul>
+          <li>
+            <strong>核心推薦算法：</strong>
+            <ul>
+              <li>
+                協同過濾 (Collaborative Filtering): 包括基於用戶 (User-Based CF)
+                和基於物品 (Item-Based CF) 的方法。
+              </li>
+              <li>
+                矩陣分解 (Matrix Factorization): 如 ALS
+                (特別適用於隱式反饋)、SVD及其變種。
+              </li>
+              <li>
+                基於內容的推薦 (Content-Based Filtering):
+                根據物品自身屬性推薦，解決冷啟動。
+              </li>
+              <li>
+                混合推薦模型 (Hybrid Models): 結合多種模型優勢（如Wide & Deep,
+                DeepFM）。
+              </li>
+              <li>
+                BPR (Bayesian Personalized Ranking):
+                針對隱式反饋數據的排序優化。
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>推薦系統相關開源項目參考：</strong>
+            <ul>
+              <li>
+                Implicit (Python):
+                <a href="https://github.com/benfred/implicit" target="_blank"
+                  >https://github.com/benfred/implicit</a
+                >
+                - 專注於隱式反饋的協同過濾，含ALS、BPR。
+              </li>
+              <li>
+                LightFM (Python):
+                <a href="https://github.com/lyst/lightfm" target="_blank"
+                  >https://github.com/lyst/lightfm</a
+                >
+                - 支持混合推薦，利用交互數據和元數據。
+              </li>
+              <li>
+                Surprise (Python):
+                <a href="https://github.com/NicolasHug/Surprise" target="_blank"
+                  >https://github.com/NicolasHug/Surprise</a
+                >
+                - 易用的推薦系統評估與算法實現庫。
+              </li>
+              <li>
+                Scikit-learn (Python):
+                <a
+                  href="https://github.com/scikit-learn/scikit-learn"
+                  target="_blank"
+                  >https://github.com/scikit-learn/scikit-learn</a
+                >
+                - 提供KNN等基礎算法。
+              </li>
+              <li>
+                TensorFlow / PyTorch (Python):
+                <a href="https://www.tensorflow.org" target="_blank"
+                  >TensorFlow</a
+                >, <a href="https://pytorch.org" target="_blank">PyTorch</a>
+                - 用於構建深度學習推薦模型。
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>數據處理與特徵工程：</strong>
+            <ul>
+              <li>Pandas, NumPy (Python): 用於高效的數據清洗、轉換和分析。</li>
+              <li>
+                Spark (Scala/Python):
+                當數據規模非常大時，用於分佈式數據處理和特徵提取。
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>模型部署與服務化：</strong>
+            <ul>
+              <li>Flask / FastAPI (Python): 用於將推薦模型封裝成API服務。</li>
+              <li>Docker / Kubernetes: 用於容器化部署和管理推薦服務。</li>
+              <li>A/B 測試平台： 用於線上評估不同推薦策略的效果。</li>
+            </ul>
+          </li>
+        </ul>
+      </details>
+      <!-- 技術棧說明部分結束 -->
+
+      <details class="image-container">
+        <summary>用戶模型</summary>
+        <img
+          src="assets/用戶模型 - 2025-05-20-090230.svg"
+          alt="用戶模型 - 推薦引擎"
+        />
+        <p class="image-caption">圖 1.1：MPay 用戶個性化推薦引擎模型</p>
+      </details>
+
+      <details class="image-container">
+        <summary>算法模型</summary>
+        <img
+          src="assets/用戶模型 - 算法模型 - 2025-05-20-090228.svg"
+          alt="算法模型-推薦算法-延伸模型"
+        />
+        <p class="image-caption">圖 1.2：推薦引擎算法模型</p>
+      </details>
+
+      <!-- 前沿AI技術 -->
+      <details class="section">
+        <summary>
+          <h3>融合前沿AI技術：基於LLM與RAG的智能需求理解與服務</h3>
+        </summary>
+        <p>
+          為進一步提升MPay平台理解並滿足用戶複雜、個性化需求的能力，我們計劃探索並逐步引入大型語言模型（LLM）和檢索增強生成（RAG）等前沿AI技術。這將使MPay從一個基於行為的推薦引擎，進化為一個能與用戶進行更自然交互、提供更深度服務的智能助手。
+        </p>
+        <ul>
+          <li><strong>大型語言模型 (LLM) 的應用：</strong></li>
+          <ul>
+            <li>
+              <strong>自然語言理解 (NLU):</strong>
+              讓MPay能夠理解用戶通過文本或語音輸入的自然語言查詢。
+            </li>
+            <li>
+              <strong>個性化對話與交互:</strong>
+              構建智能客服、導購助手，根據用戶上下文和需求多輪對話。
+            </li>
+            <li>
+              <strong>內容生成與摘要:</strong>
+              自動生成商戶/優惠亮點描述、用戶評論摘要。
+            </li>
+          </ul>
+          <li><strong>檢索增強生成 (RAG) 的整合：</strong></li>
+          <ul>
+            <li>
+              <strong>外部知識庫增強:</strong>
+              LLM結合MPay實時商戶、優惠、評論等外部知識庫，確保信息準確性和時效性。
+            </li>
+            <li>
+              <strong>提升推薦的解釋性:</strong>
+              利用RAG從知識庫提取信息，向用戶解釋推薦原因。
+            </li>
+            <li>
+              <strong>處理更複雜的查詢:</strong>
+              RAG能從不同來源檢索並整合生成答案。
+            </li>
+          </ul>
+          <li><strong>潛在應用場景：</strong></li>
+          <ul>
+            <li>
+              <strong>智能搜索與問答:</strong> MPay內置智能搜索框或問答機器人。
+            </li>
+            <li>
+              <strong>個性化行程規劃助手:</strong>
+              結合交通數據、景點、優惠，生成個性化建議。
+            </li>
+            <li><strong>智能客服升級:</strong> 提升自動客服解答範圍和深度。</li>
+          </ul>
+          <li><strong>參考技術與開源項目：</strong></li>
+          <ul>
+            <li>
+              <strong>LLM模型:</strong>
+              Llama、Qwen、Baichuan等中文優化模型，並可微調。
+            </li>
+            <li>
+              <strong>RAG框架與工具:</strong>
+              <a
+                href="https://github.com/langchain-ai/langchain"
+                target="_blank"
+                >LangChain</a
+              >、<a
+                href="https://github.com/run-llama/llama_index"
+                target="_blank"
+                >LlamaIndex</a
+              >、FAISS、Milvus、Weaviate、Pinecone等向量數據庫。
+            </li>
+            <li>
+              <strong>參考項目:</strong>
+              <a
+                href="https://github.com/OpenStellarTeam/ChineseEcomQA"
+                target="_blank"
+                >ChineseEcomQA</a
+              >、<a
+                href="https://github.com/OpenStellarTeam/ChineseSimpleQA"
+                target="_blank"
+                >ChineseSimpleQA</a
+              >，可借鑒數據處理、模型微調和評估方法。
+            </li>
+          </ul>
+        </ul>
+        <p>
+          引入LLM和RAG技術將分階段進行，初期可從優化語義理解開始，逐步擴展到複雜交互式服務。
+        </p>
+        <details class="image-container">
+          <summary>算法模型</summary>
+          <img
+            src="assets/用戶模型 - 算法模型 - LLM - RAG - MCP延伸模型.svg"
+            alt="算法模型 - 延伸"
+          />
+          <p class="image-caption">圖 1.3：推薦引擎算法模型</p>
+        </details>
+      </details>
+    </details>
+
+    <!-- 智能交易風控系統 -->
+    <details class="section">
+      <summary><h2>2. 智能交易風控系統</h2></summary>
+      <p>
+        該系統作為金融核心基礎設施，旨在運用數據科學方法提升交易安全性與運營效率。
+      </p>
+      <ul>
+        <li>
+          <strong>核心策略：</strong
+          >多維數據交叉分析，挖掘異常模式，識別欺詐網絡與潛在風險。
+        </li>
+        <li>
+          <strong>模型設計與優化：</strong
+          >融合多類AI算法（傳統ML、深度學習、GNN），構建自適應風控模型，持續提升檢測精度與泛化。
+        </li>
+        <li>
+          <strong>算法實現與部署：</strong
+          >風控模型實時嵌入交易流，實現毫秒級風險判斷；自動化監控與快速迭代更新。
+        </li>
+        <li>
+          <strong>價值實現：</strong
+          >最大限度降低欺詐損失與運營成本；增強用戶信任，符合金融合規，賦能B端增值服務。
+        </li>
+      </ul>
+      <!-- 核心職責列表結束 -->
+
+      <!-- 基礎(傳統) 風控技術棧 -> 重構為市場主流AI/ML技術棧 -->
+      <details class="section">
+        <summary><h3>核心AI/ML風控技術棧 (市場主流與成熟實踐)</h3></summary>
+        <p>
+          在確保風控系統穩定可靠的基礎上，以下是當前市場上廣泛應用且效果顯著的AI/ML技術棧，它們構成了現代智能風控的核心：
+        </p>
+        <ul>
+          <li>
+            <strong>核心機器學習算法與應用：</strong>
+            <ul>
+              <li>
+                <strong>監督學習分類器：</strong>
+                <ul>
+                  <li>
+                    邏輯回歸 (Logistic Regression):
+                    常用於風險評分卡模型，可解釋性較好。
+                  </li>
+                  <li>
+                    決策樹 (Decision Trees) 及 隨機森林 (Random Forest):
+                    適用於非線性關係建模，魯棒性較強。
+                  </li>
+                  <li>
+                    梯度提升機 (Gradient Boosting Machines - XGBoost, LightGBM,
+                    CatBoost):
+                    目前工業界風控領域性能最優異、應用最廣泛的算法之一，能有效處理複雜數據和不平衡問題。
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>異常檢測算法 (基於統計與機器學習)：</strong>
+                <ul>
+                  <li>
+                    統計方法：Z-score, IQR (Interquartile Range)
+                    等，用於識別明顯偏離的數據點。
+                  </li>
+                  <li>
+                    基於密度的算法：LOF (Local Outlier
+                    Factor)，能發現局部異常點。
+                  </li>
+                  <li>
+                    基於距離的算法：One-Class SVM, Isolation
+                    Forest，適用於高維數據和大規模數據集的異常檢測。
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>特徵工程與選擇：</strong
+                >構建高質量風險特徵是模型成功的關鍵，包括行為序列特徵、時間窗口統計特徵、設備/IP關聯特徵等；特徵選擇方法（如Filter,
+                Wrapper, Embedded methods）用於篩選最優特徵組合。
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>關鍵數據處理與分析技術：</strong>
+            <ul>
+              <li>
+                <strong>數據清洗與預處理：</strong
+                >缺失值填充、異常值處理、數據標準化/歸一化。
+              </li>
+              <li>
+                <strong>不平衡數據處理：</strong>過採樣
+                (SMOTE)、欠採樣、代價敏感學習，解決欺詐樣本遠少於正常樣本的問題。
+              </li>
+              <li>
+                <strong>探索性數據分析 (EDA)：</strong
+                >深入理解數據特性，發現潛在風險模式。
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>模型評估與驗證體系：</strong>
+            <ul>
+              <li>
+                <strong>常用評估指標：</strong>AUC-ROC, Precision-Recall AUC
+                (AUPRC), F1-score, Recall (查全率/召回率), Precision
+                (查準率/精確率), KS統計量。
+              </li>
+              <li>
+                <strong>模型穩定性監控：</strong>PSI (Population Stability
+                Index), CSI (Characteristic Stability
+                Index)，監控模型在生產環境的表現。
+              </li>
+              <li>
+                <strong>交叉驗證與回溯測試 (Backtesting)：</strong
+                >確保模型泛化能力和在歷史數據上的有效性。
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>市場主流風控相關開源項目與工具參考：</strong>
+            <ul>
+              <li>
+                <strong>通用機器學習庫:</strong>
+                <ul>
+                  <li>
+                    Scikit-learn (Python):
+                    <a href="https://scikit-learn.org/" target="_blank"
+                      >https://scikit-learn.org/</a
+                    >
+                    - 提供豐富的分類、回歸、聚類、降維、模型選擇、預處理工具。
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>梯度提升框架 (性能卓越):</strong>
+                <ul>
+                  <li>
+                    XGBoost:
+                    <a href="https://xgboost.ai/" target="_blank"
+                      >https://xgboost.ai/</a
+                    >
+                  </li>
+                  <li>
+                    LightGBM:
+                    <a href="https://lightgbm.readthedocs.io/" target="_blank"
+                      >https://lightgbm.readthedocs.io/</a
+                    >
+                  </li>
+                  <li>
+                    CatBoost:
+                    <a href="https://catboost.ai/" target="_blank"
+                      >https://catboost.ai/</a
+                    >
+                    (對類別特徵處理友好)
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>數據處理與分析庫:</strong>
+                <ul>
+                  <li>
+                    Pandas (Python):
+                    <a href="https://pandas.pydata.org/" target="_blank"
+                      >https://pandas.pydata.org/</a
+                    >
+                    - 強大的數據處理和分析工具。
+                  </li>
+                  <li>
+                    NumPy (Python):
+                    <a href="https://numpy.org/" target="_blank"
+                      >https://numpy.org/</a
+                    >
+                    - 科學計算基礎庫。
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>不平衡學習處理庫:</strong>
+                <ul>
+                  <li>
+                    Imbalanced-learn (Python):
+                    <a href="https://imbalanced-learn.org/" target="_blank"
+                      >https://imbalanced-learn.org/</a
+                    >
+                    - 提供多種過採樣和欠採樣方法。
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>規則引擎 (基礎補充):</strong>
+                <ul>
+                  <li>
+                    （雖然AI/ML是重點，但規則引擎在風控中仍有一席之地，可自研或選用Drools等開源方案作為補充）
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          這些成熟的AI/ML技術和工具共同構成了當前風控領域的堅實基礎，能夠有效地識別和防禦多種已知和部分未知的交易風險。
+        </p>
+      </details>
+      <!-- 核心AI/ML風控技術棧 (市場主流與成熟實踐) 結束 -->
+
+      <!-- 方案 2 風控樊型 SVG IMAGE -->
+      <details class="image-container">
+        <summary>風控模型</summary>
+        <img src="assets/風控模型 - 2025-05-20-095605.svg" alt="風控模型" />
+        <p class="image-caption">圖 2.1：智能交易風控模型</p>
+      </details>
+
+      <!-- AI 驅動的新一代風控技術 -> 更名並重構結構 (嚴格參考方案1) -->
+      <details class="section">
+        <summary><h3>核心技術與開源參考 (AI風控)</h3></summary>
+        <p>
+          為應對日益複雜的欺詐手段並提升智能化水平，前沿AI技術在風控領域的應用至關重要。以下為構建新一代智能風控系統的核心技術方向及相關開源實踐：
+        </p>
+        <ul>
+          <li>
+            <strong>核心AI算法與應用方向：</strong>
+            <ul>
+              <li>
+                <strong>深度學習模型：</strong>序列建模 (RNN/LSTM/Transformer)
+                分析交易上下文；自編碼器 (Autoencoders)
+                進行無監督異常檢測；注意力機制提升模型效能。
+              </li>
+              <li>
+                <strong>圖計算與圖神經網絡 (GNN)：</strong
+                >挖掘交易網絡關係（團伙欺詐、資金網絡），進行節點/邊的風險預測與社區發現。
+              </li>
+              <li>
+                <strong>無監督與半監督學習：</strong
+                >應對標籤稀缺挑戰，發現未知欺詐模式，結合主動學習優化模型。
+              </li>
+              <li>
+                <strong>可解釋性AI (XAI)：</strong
+                >保障模型決策透明度，滿足合規性，輔助模型迭代 (如LIME, SHAP)。
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>關鍵基礎設施與技術：</strong>
+            <ul>
+              <li>
+                <strong>實時流處理平台：</strong
+                >保障風控模型毫秒級響應，處理海量實時交易數據 (如 Apache Kafka,
+                Apache Flink)。
+              </li>
+              <li>
+                <strong>高性能計算與分佈式學習：</strong
+                >支持複雜模型的訓練與推理。
+              </li>
+              <li>
+                <strong>模型部署與MLOps：</strong>容器化 (Docker,
+                Kubernetes)，模型版本控制、監控與自動化迭代 (如 Kubeflow,
+                MLflow)。
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>前沿風控相關開源項目參考：</strong>
+            <ul>
+              <li>
+                <strong
+                  >深度學習框架 (用於構建序列模型、Autoencoders等):</strong
+                >
+                <ul>
+                  <li>
+                    TensorFlow:
+                    <a href="https://www.tensorflow.org" target="_blank"
+                      >https://www.tensorflow.org</a
+                    >
+                  </li>
+                  <li>
+                    PyTorch:
+                    <a href="https://pytorch.org" target="_blank"
+                      >https://pytorch.org</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>圖神經網絡庫:</strong>
+                <ul>
+                  <li>
+                    PyTorch Geometric (PyG):
+                    <a
+                      href="https://pytorch-geometric.readthedocs.io/"
+                      target="_blank"
+                      >https://pytorch-geometric.readthedocs.io/</a
+                    >
+                  </li>
+                  <li>
+                    Deep Graph Library (DGL):
+                    <a href="https://www.dgl.ai/" target="_blank"
+                      >https://www.dgl.ai/</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>異常檢測專用庫:</strong>
+                <ul>
+                  <li>
+                    PyOD (Python Outlier Detection):
+                    <a href="https://pyod.readthedocs.io/" target="_blank"
+                      >https://pyod.readthedocs.io/</a
+                    >
+                    - 包含多種無監督異常檢測算法。
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>可解釋性AI庫:</strong>
+                <ul>
+                  <li>
+                    SHAP:
+                    <a href="https://github.com/slundberg/shap" target="_blank"
+                      >https://github.com/slundberg/shap</a
+                    >
+                  </li>
+                  <li>
+                    LIME:
+                    <a href="https://github.com/marcotcr/lime" target="_blank"
+                      >https://github.com/marcotcr/lime</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>流處理平台:</strong>
+                <ul>
+                  <li>
+                    Apache Kafka:
+                    <a href="https://kafka.apache.org/" target="_blank"
+                      >https://kafka.apache.org/</a
+                    >
+                  </li>
+                  <li>
+                    Apache Flink:
+                    <a href="https://flink.apache.org/" target="_blank"
+                      >https://flink.apache.org/</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>MLOps平台 (開源選項):</strong>
+                <ul>
+                  <li>
+                    MLflow:
+                    <a href="https://mlflow.org/" target="_blank"
+                      >https://mlflow.org/</a
+                    >
+                  </li>
+                  <li>
+                    Kubeflow:
+                    <a href="https://www.kubeflow.org/" target="_blank"
+                      >https://www.kubeflow.org/</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <!-- 可以根據需要添加如 "數據處理與特徵工程 (進階)" 等頂層分類 -->
+        </ul>
+      </details>
+
+      <!-- 方案X：MPay AI數字金融服務拓展 -->
+      <details open class="section">
+        <summary>
+          <h4>延伸思考：MPay AI數字金融服務拓展 - 賦能智慧理財與普惠金融</h4>
+        </summary>
+        <p>
+          鑑於MPay已具備類似“餘額寶”的基礎金融產品，並擁有龐大的用戶基礎和豐富的交易數據，未來可利用AI技術，與銀行等金融機構深度合作，開拓更廣闊的數字金融服務領域，將MPay打造成澳門居民首選的“智能數字錢包”與普惠金融服務平台。
+        </p>
+
+        <ul>
+          <li>
+            <strong>延伸方向1：AI驅動的個性化智能投顧與財富管理</strong>
+            <ul>
+              <li>
+                <strong>用戶畫像深化 (金融維度):</strong>
+                結合用戶的MPay消費數據、類“餘額寶”產品使用情況、以及（在用戶授權前提下）合作銀行的賬戶信息，利用AI構建精準的用戶風險偏好模型、投資能力模型和理財需求模型。
+              </li>
+              <li>
+                <strong>智能投資組合推薦:</strong>
+                <ul>
+                  <li>
+                    與銀行/基金公司合作，基於用戶畫像，通過AI算法（如強化學習、現代投資組合理論結合機器學習）推薦個性化的、動態調整的投資組合理念或具體金融產品（如基金、結構性存款、保險等）。
+                  </li>
+                  <li>
+                    提供“一鍵理財”、“目標導向儲蓄/投資計劃”（如子女教育金、購房計劃）等便捷功能。
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>AI理財助手與教育:</strong>
+                利用LLM/RAG技術，提供7x24小時的智能理財諮詢服務，解答用戶疑問，進行金融知識普及和風險教育，提升用戶財商。
+              </li>
+              <li>
+                <strong>技術實現要點:</strong>
+                風險建模、資產配置優化算法、自然語言處理、合規性與可解釋性AI。
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>延伸方向2：基於AI的普惠信貸與數字消費金融</strong>
+            <ul>
+              <li>
+                <strong>AI信用評估體系:</strong>
+                <ul>
+                  <li>
+                    依託MPay的交易流水、支付行為、社交關係（若有，且合規）等多維度數據，結合合作銀行的信貸數據，利用機器學習模型（如梯度提升機、深度學習網絡）建立更精準、更動態的個人信用評分體系。
+                  </li>
+                  <li>尤其能覆蓋傳統銀行難以評估的“信用白戶”或小微商戶。</li>
+                </ul>
+              </li>
+              <li>
+                <strong>場景化小額信貸產品:</strong>
+                與銀行合作，推出基於MPay支付場景的“先買後付”、小額消費貸、商戶經營貸等數字信貸產品，AI模型負責實時審批與風險定價。
+              </li>
+              <li>
+                <strong>智能反欺詐與催收:</strong>
+                AI模型不僅用於貸前審批，也用於貸中監控預警和貸後智能催收策略優化。
+              </li>
+              <li>
+                <strong>技術實現要點:</strong>
+                信用評分模型、反欺詐模型、大數據處理、隱私計算（保障數據合作安全）。
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>延伸方向3：AI賦能的數字化保險服務</strong>
+            <ul>
+              <li>
+                <strong>個性化保險推薦:</strong>
+                根據用戶的消費習慣（如經常出行、高頻餐飲）、家庭結構（通過消費數據推斷）、健康相關消費（如藥店、體檢機構消費），結合AI模型推薦合適的保險產品（如意外險、健康險、特定場景險）。
+              </li>
+              <li>
+                <strong>智能核保與理賠:</strong>
+                與保險公司合作，探索利用AI簡化核保流程，並在小額理賠中實現自動化處理，提升效率和用戶體驗。
+              </li>
+              <li>
+                <strong>技術實現要點:</strong>
+                用戶行為分析、風險概率模型、圖像識別（理賠單據）、自然語言處理（理賠描述）。
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>合作模式與數據協同：</strong>
+            <ul>
+              <li>
+                <strong>與銀行等金融機構的戰略合作是成功的關鍵:</strong>
+                MPay提供流量、場景、數據洞察和部分AI能力；金融機構提供金融產品、牌照、專業風控經驗和資金。
+              </li>
+              <li>
+                <strong>數據安全與隱私保護是基石:</strong>
+                在所有數據合作與AI應用中，必須嚴格遵守個人資料保護法規，採用聯邦學習、多方安全計算等隱私保護技術，確保用戶數據安全和合規使用。
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>預期價值：</strong>
+            <ul>
+              <li>
+                <strong>提升MPay用戶粘性與ARPU值:</strong>
+                提供更全面的金融服務，增加用戶留存和單用戶價值。
+              </li>
+              <li>
+                <strong>拓展新的收入增長點:</strong>
+                通過金融產品代銷、服務費等方式實現盈利。
+              </li>
+              <li>
+                <strong>踐行普惠金融:</strong>
+                服務更廣泛的用戶群體，特別是傳統金融服務覆蓋不足的人群。
+              </li>
+              <li>
+                <strong>助力澳門數字經濟與智慧城市發展:</strong>
+                豐富本地數字金融生態。
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          通過AI技術賦能，MPay有潛力從一個支付工具進化為一個綜合性的數字金融服務平台，為澳門提供更便捷、更個性化的金融生活體驗。
+        </p>
+      </details>
+      <!-- 方案X結束 -->
+    </details>
+    <!-- 智能交易風控系統結束 -->
+
+    <!-- 智慧城市與客流分析 -->
+    <!-- 暫時棄用 -->
+    <!-- <details class="section">
+      <summary><h2>3. 澳門智慧交通客流預測與分析平台</h2></summary>
+      <p>
+        此平台旨在運用大數據分析和預測建模技術，優化澳門的智慧交通運行效率。
+      </p>
+      <ul>
+        <li>
+          大數據分析與預測：負責收集、清洗與預處理交通數據（如公交刷卡、地理定位等），應用時間序列分析和深度學習（如
+          LSTM）等機器學習方法，對城市客流進行精準預測，以支持公交運營優化。
+        </li>
+        <li>
+          算法研究與應用：持續研究最新的機器學習和深度學習技術，特別關注時空數據預測領域的進展，並將研究成果應用於實際專案，提升客流預測模型的準確性和實用性。
+        </li>
+        <li>
+          跨部門協作：與交通運營方及政府部門緊密合作，將數據分析與預測結果轉化為具體的交通優化策略和決策支持，提升公共服務質量與城市運轉效率。
+        </li>
+        <li>
+          價值實現：主要通過提升公交運營效率、降低運營成本和提升公共服務質量來實現社會效益。未來可探索向交通運營機構提供數據分析增值服務。
+        </li>
+      </ul> -->
+    <!-- 核心技術棧 (市場主流與成熟實踐 - 智慧交通) -->
+    <!--     <details class="section">
+      <summary><h3>核心技術棧 (市場主流與成熟實踐 - 智慧交通)</h3></summary>
+      <p>
+        構建實用且可靠的智慧交通分析平台，首先依賴於市場上成熟的數據處理、統計分析及基礎機器學習技術：
+      </p>
+      <ul>
+        <li>
+          <strong>核心數據處理與分析技術：</strong>
+          <ul>
+            <li>
+              <strong>多源數據融合：</strong
+              >整合公交卡數據(OD流)、車輛GPS數據、地鐵/輕軌閘機數據、道路傳感器數據、天氣數據、日曆事件（節假日/大型活動）數據。
+            </li>
+            <li>
+              <strong>時空數據預處理：</strong
+              >軌跡清洗、噪聲過濾、地圖匹配、時間/空間網格化。
+            </li>
+            <li>
+              <strong>探索性時空數據分析 (ESTDA)：</strong
+              >可視化客流熱力圖、OD流向圖、擁堵時空分佈，發現交通模式。
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>基礎時間序列預測模型：</strong>
+          <ul>
+            <li>
+              統計模型：ARIMA, SARIMA, Exponential Smoothing
+              (Holt-Winters)，適用於趨勢明顯、季節性較強的短期客流預測。
+            </li>
+            <li>
+              機器學習回歸模型：線性回歸、支持向量回歸
+              (SVR)、決策樹回歸，可引入外部特徵（天氣、節假日）。
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>交通狀態評估與基礎機器學習應用：</strong>
+          <ul>
+            <li>
+              交通擁堵識別：基於速度、密度、行程時間等閾值或簡單分類模型。
+            </li>
+            <li>
+              出行模式識別：如通勤、休閒出行等（可基於聚類算法如K-Means）。
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>數據可視化與報告：</strong>
+          <ul>
+            <li>
+              利用BI工具或可視化庫（如Matplotlib, Seaborn, Plotly,
+              Kepler.gl）展示客流分析結果、預測趨勢、擁堵地圖等。
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>市場主流智慧交通相關開源項目與工具參考：</strong>
+          <ul>
+            <li>
+              <strong>數據處理與分析:</strong>
+              <ul>
+                <li>
+                  Pandas, GeoPandas (Python):
+                  <a href="https://pandas.pydata.org/" target="_blank">Pandas</a
+                  >,
+                  <a href="https://geopandas.org/" target="_blank">GeoPandas</a>
+                  - 處理表格及地理空間數據。
+                </li>
+                <li>
+                  NumPy, SciPy (Python):
+                  <a href="https://numpy.org/" target="_blank">NumPy</a>,
+                  <a href="https://www.scipy.org/" target="_blank">SciPy</a> -
+                  科學計算。
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>時間序列分析庫:</strong>
+              <ul>
+                <li>
+                  Statsmodels (Python):
+                  <a href="https://www.statsmodels.org/" target="_blank"
+                    >https://www.statsmodels.org/</a
+                  >
+                  - 提供ARIMA等統計模型。
+                </li>
+                <li>
+                  Prophet (Python/R):
+                  <a href="https://facebook.github.io/prophet/" target="_blank"
+                    >https://facebook.github.io/prophet/</a
+                  >
+                  - Facebook開源的時間序列預測工具，易用性好。
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>通用機器學習庫:</strong>
+              <ul>
+                <li>
+                  Scikit-learn (Python):
+                  <a href="https://scikit-learn.org/" target="_blank"
+                    >https://scikit-learn.org/</a
+                  >
+                  - 提供回歸、分類、聚類算法。
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>地理空間數據處理與可視化:</strong>
+              <ul>
+                <li>
+                  Shapely, Fiona, Rasterio (Python): 處理矢量和柵格地理數據。
+                </li>
+                <li>
+                  Kepler.gl, Deck.gl (JavaScript): 大規模地理空間數據可視化。
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </details> -->
+    <!-- 核心技術棧 (市場主流與成熟實踐 - 智慧交通) 結束 -->
+    <!--       <details class="image-container">
+        <summary>交通模型</summary>
+        <img
+          src="assets/客流與風控模型 - 2025-05-20-095204.svg"
+          alt="交通模型"
+        />
+        <p class="image-caption">圖 3.1：澳門智慧交通客流與風控模型</p>
+      </details>
+      <details class="image-container">
+        <summary>LTSM 算法模型</summary>
+        <img
+          src="assets/客流LTSM模型 -2025-05-20-095949.svg"
+          alt="LTSM 算法模型"
+        />
+        <p class="image-caption">圖 3.2：客流預測 LSTM 算法模型</p>
+      </details>
+    </details> -->
+
+    <details class="section">
+      <summary><h2>3. 智慧文旅與生活便利服務平台</h2></summary>
+      <p>
+        本平台旨在利用AI與大數據技術，深度整合澳門本地及周邊（香港、大灣區）的文娛、生活及出行資源，為MPay用戶（包括本地居民與遊客）打造一站式、個性化、智能化的便捷服務體驗。
+      </p>
+      <!-- 方案3開篇核心職責列表 (全新方向) -->
+      <ul>
+        <li>
+          <strong>文娛票務與區域聯動：</strong
+          >整合澳門及香港（乃至大灣區）的演出、展覽、體育賽事等票務資源，利用AI進行個性化推薦與打包行程建議（如“港澳聯遊”娛樂套餐），提升對遊客的吸引力與用戶粘性。
+        </li>
+        <li>
+          <strong>本地生活服務深化：</strong
+          >拓展MPay在停車、水電煤繳費、社區服務等本地民生領域的支付場景覆蓋，通過便捷支付與智能提醒服務，提升居民用戶的活躍度與預儲值意願，增強平台現金流。
+        </li>
+        <li>
+          <strong>智慧出行與新能源配套：</strong
+          >考慮與高德地圖等第三方合作，整合實時交通資訊、智能停車導航服務；關注新能源車趨勢，提供目的地充電樁信息查詢與預訂等配套服務，提升出行便捷性。
+        </li>
+        <li>
+          <strong>AI行程規劃與個性化推薦：</strong>探索開發AI行程規劃助手 (AI
+          Agent)，允許用戶通過自然語言描述需求，智能生成澳門本地及周邊（如大灣區短途遊）的個性化遊玩、消費、出行計劃，並一鍵預訂MPay內的相關服務。
+        </li>
+      </ul>
+      <!-- 核心職責列表結束 -->
+
+      <!-- 核心技術與開源參考 (智慧文旅與生活) -->
+      <details class="section">
+        <summary><h3>核心技術與開源參考 (智慧文旅與生活)</h3></summary>
+        <p>
+          參考行業領先者（如攜程、Skyscanner、Agoda）的成功實踐，並結合MPay的本地化優勢，以下技術棧將是構建智慧文旅與生活便利服務平台的關鍵：
+        </p>
+
+        <!-- 核心技術棧 -->
+        <!-- 市場主流與成熟實踐技術 -->
+        <details class="subsection">
+          <!-- 新增 class 便於樣式控制 -->
+          <summary><h4>核心AI算法與應用方向 (市場主流與成熟實踐)</h4></summary>
+          <ul>
+            <li>
+              <strong>個性化推薦系統：</strong>
+              <ul>
+                <li>
+                  應用：基於用戶行為、畫像、物品屬性進行協同過濾、內容及混合推薦（門票、活動、餐飲、酒店等）。
+                </li>
+                <li>
+                  本地化思考：澳門節慶/美食/新熱點加權；內地遊客“首次遊澳必看/必吃”，本地居民“週末好去處”。
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>智能搜索引擎與問答 (基礎版)：</strong>
+              <ul>
+                <li>
+                  應用：關鍵詞搜索，基礎意圖識別（票價、開放時間、停車位），結構化數據檢索。
+                </li>
+                <li>
+                  本地化思考：優化粵語口語理解；整合澳門常用信息（穿梭巴士、口岸通關）。
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>用戶畫像與分群：</strong>
+              <ul>
+                <li>
+                  應用：多維度用戶標籤（美食愛好者、親子遊客、演唱會常客），用於精準營銷。
+                </li>
+                <li>
+                  本地化思考：識別“常往港澳遊客”、“大灣區短途遊愛好者”、“澳門學生”等。
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>動態定價與庫存管理 (基礎概念)：</strong>
+              <ul>
+                <li>
+                  應用：分析價格波動提供參考；自營/強合作服務探索動態調整。
+                </li>
+                <li>本地化思考：關注澳門旅遊淡旺季、大型展會期價格規律。</li>
+              </ul>
+            </li>
+          </ul>
+        </details>
+        <!-- 市場主流與成熟實踐技術結束 -->
+
+        <!-- 前沿AI技術與應用方向 -->
+        <details class="subsection">
+          <!-- 新增 class 便於樣式控制 -->
+          <summary><h4>前沿AI技術與應用方向 (提升體驗與智能化)</h4></summary>
+          <ul>
+            <li>
+              <strong>基於LLM的智能行程規劃 (AI Agent)：</strong>
+              <ul>
+                <li>
+                  應用：自然語言需求理解，結合知識圖譜自動生成多方案行程，支持多輪對話調整。
+                </li>
+                <li>
+                  本地化思考：專注澳門1-3日遊、港澳聯遊、大灣區主題遊；整合MPay內可預訂服務。
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>基於LLM/RAG的增強型問答與導覽：</strong>
+              <ul>
+                <li>應用：提供豐富背景信息、遊玩建議、評價摘要。</li>
+                <li>
+                  本地化思考：構建澳門本地化知識庫（歷史文化、特色店鋪、交通攻略）。
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>情感分析與用戶體驗優化：</strong>
+              <ul>
+                <li>應用：分析用戶評論反饋，了解情感傾向與痛點，改進服務。</li>
+                <li>本地化思考：關注不同客源地用戶評價差異。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>增強現實(AR)與3D可視化交互體驗：</strong>
+              <ul>
+                <li>應用：AR實景導覽、3D商品/場景預覽、地理位置AR互動遊戲。</li>
+                <li>
+                  本地化思考：結合澳門文化元素設計AR互動；AI
+                  Agent協同提供智能講解。
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>計算機視覺 (CV) 基礎支撐：</strong>
+              <ul>
+                <li>
+                  應用：實景識別 (SLAM)，圖像識別，OCR，Images-to-3D技術。
+                </li>
+                <li>本地化思考：針對澳門街景、多語言環境優化CV模型。</li>
+              </ul>
+            </li>
+          </ul>
+        </details>
+        <!-- 前沿AI技術與應用方向結束 -->
+
+        <!-- 相關開源項目與工具參考 -->
+        <details class="subsection">
+          <!-- 新增 class 便於樣式控制 -->
+          <summary><h4>相關開源項目與工具參考</h4></summary>
+          <ul>
+            <li>
+              <strong>推薦系統:</strong>
+              <ul>
+                <li>Implicit, LightFM, Surprise (Python)</li>
+                <li>
+                  TensorFlow Recommenders (TFRS):
+                  <a
+                    href="https://www.tensorflow.org/recommenders"
+                    target="_blank"
+                    >TensorFlow Recommenders</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>自然語言處理與LLM應用:</strong>
+              <ul>
+                <li>
+                  Hugging Face Transformers (Python):
+                  <a
+                    href="https://huggingface.co/docs/transformers/index"
+                    target="_blank"
+                    >Hugging Face Transformers</a
+                  >
+                </li>
+                <li>LangChain, LlamaIndex (Python)</li>
+                <li>spaCy, NLTK (Python)</li>
+              </ul>
+            </li>
+            <li>
+              <strong>搜索引擎與知識圖譜構建:</strong>
+              <ul>
+                <li>Elasticsearch / OpenSearch</li>
+                <li>Neo4j, JanusGraph</li>
+              </ul>
+            </li>
+            <li>
+              <strong>數據處理與通用ML:</strong>
+              <ul>
+                <li>Pandas, NumPy, Scikit-learn, XGBoost, LightGBM (Python)</li>
+              </ul>
+            </li>
+            <li>
+              <strong>地理空間數據處理:</strong>
+              <ul>
+                <li>GeoPandas, Shapely (Python)</li>
+              </ul>
+            </li>
+            <li>
+              <strong>AR開發框架:</strong>
+              <ul>
+                <li>ARKit (iOS), ARCore (Android)</li>
+                <li>Unity MARS, Unreal Engine AR Frameworks</li>
+                <li>WebXR Device API</li>
+              </ul>
+            </li>
+            <li>
+              <strong>3D建模與展示:</strong>
+              <ul>
+                <li>Three.js, BabylonJS (JavaScript)</li>
+                <li>Blender (開源3D建模)</li>
+                <li>(Images-to-3D開源項目/API服務)</li>
+              </ul>
+            </li>
+          </ul>
+        </details>
+        <!-- 相關開源項目與工具參考結束 -->
+
+        <p>
+          通過借鑒並本地化這些成熟及前沿的AI技術，MPay智慧文旅與生活便利服務平台能夠顯著提升用戶體驗，創造新的商業價值，並助力澳門打造更具吸引力的智慧旅遊目的地。
+        </p>
+      </details>
+
+      <!-- 智慧文旅與生活平台架構圖 -->
+      <details class="image-container">
+        <summary>智慧文旅與生活平台架構圖</summary>
+        <img
+          src="assets/智慧文旅與生活服務 模型.svg"
+          alt="智慧文旅與生活平台架構圖"
+        />
+        <p class="image-caption">圖 3.1：智慧文旅與生活平台架構圖</p>
+      </details>
+
+      <!--  -->
+      <details class="image-container">
+        <summary>AI行程規劃Agent與AR體驗融合流程示例</summary>
+        <img
+          src="assets/智慧文旅服務 序列圖 sequenceDiagram.svg "
+          alt="AI行程規劃Agent與AR體驗融合流程示例"
+        />
+        <p class="image-caption">
+          圖 3.2：AI行程規劃Agent與AR體驗融合流程示意圖
+        </p>
+
+        <!-- 新增的說明列表 -->
+        <div class="diagram-explanation">
+          <h4>圖表說明：</h4>
+          <ul>
+            <li>
+              <strong>用戶 (MPay App):</strong>
+              代表通過MPay應用程式與系統互動的最終使用者。
+            </li>
+            <li>
+              <strong>AI行程規劃Agent:</strong>
+              負責理解用戶需求、查詢資源、智能規劃行程並生成方案的AI核心組件。
+            </li>
+            <li>
+              <strong>MPay文旅資源庫 & 外部知識:</strong>
+              存儲所有相關信息，包括景點、活動、交通、商戶、AR內容及外部知識。
+            </li>
+            <li>
+              <strong>AR引擎 & CV:</strong>
+              負責處理增強現實的渲染、實景識別和計算機視覺相關任務。
+            </li>
+            <li>
+              <strong>箭頭 (->> / -->>):</strong>
+              表示不同組件間的消息傳遞和數據流動方向。實線箭頭代表請求或操作，虛線箭頭代表響應或數據返回。
+            </li>
+            <li><strong>時間順序:</strong> 從上至下表示事件發生的先後順序。</li>
+            <li>
+              <strong>核心流程:</strong>
+              <ol>
+                <li>用戶提出行程需求。</li>
+                <li>AI Agent規劃並返回行程方案。</li>
+                <li>用戶在特定地點觸發AR體驗。</li>
+                <li>AR引擎加載並展示AR內容。</li>
+                <li>AI Agent可在AR場景中提供額外輔助。</li>
+              </ol>
+            </li>
+          </ul>
+        </div>
+        <!-- 說明列表結束 -->
+      </details>
+
+      <!-- ...待填充... -->
+    </details>
+
+    <!-- Overall Plan Summary (Clean Business Version) -->
+    <details open class="section">
+      <summary><h2>總結</h2></summary>
+      <p>
+        本系列方案旨在通過數據科學與AI技術，提升MPay在個性化推薦、交易風險控制及文旅與生活服務領域的核心能力，推動MPay向數據驅動的智能服務平台轉型。
+      </p>
+      <h3>核心方案概要</h3>
+      <ul style="list-style-type: none; padding-left: 0">
+        <li>
+          <h4 style="margin-bottom: 2px">方案1: MPay用戶個性化推薦引擎</h4>
+          <p style="margin: 0">
+            <strong>目標：</strong>AI驅動個性化推薦，提升用戶活躍度與轉化率。
+          </p>
+          <p style="margin: 0">
+            <strong>路徑：</strong>應用成熟推薦算法，探索LLM/RAG技術。
+          </p>
+          <p style="margin: 0">
+            <strong>價值：</strong>提升交易額與ARPU值，拓展增值服務。
+          </p>
+        </li>
+        <li
+          style="padding-top: 5px; margin-top: 5px; border-top: 1px solid #ccc"
+        >
+          <!-- Minimal separator -->
+          <h4 style="margin-bottom: 2px">方案2: 智能交易風險控制系統</h4>
+          <p style="margin: 0">
+            <strong>目標：</strong>AI構建實時智能風險控制體系，保障交易安全。
+          </p>
+          <p style="margin: 0">
+            <strong>路徑：</strong>應用主流ML風險控制模型，引入前沿AI技術。
+          </p>
+          <p style="margin: 0">
+            <strong>價值：</strong
+            >降低欺詐損失與運營成本，強化用戶信任，符合合規。
+          </p>
+        </li>
+        <li
+          style="padding-top: 5px; margin-top: 5px; border-top: 1px solid #ccc"
+        >
+          <!-- Minimal separator -->
+          <h4 style="margin-bottom: 2px">
+            方案3: MPay智慧文旅與生活便利服務平台
+          </h4>
+          <p style="margin: 0">
+            <strong>目標：</strong
+            >AI整合區域資源，提供個性化、便捷的文旅生活服務。
+          </p>
+          <p style="margin: 0">
+            <strong>路徑：</strong>應用推薦/搜索技術，探索AI Agent及AR/3D應用。
+          </p>
+          <p style="margin: 0">
+            <strong>價值：</strong>深化本地服務，拓展文旅消費，創新用戶體驗。
+          </p>
+        </li>
+      </ul>
+      <h3>戰略協同與實施建議</h3>
+      <p>各方案通過數據共享與統一用戶視角實現協同，共同促進MPay平台發展。</p>
+      <p>
+        <strong>實施建議：</strong
+        >優先發展推薦引擎與風險控制系統，保障核心業務增長與安全；在此基礎上，逐步拓展智慧文旅與生活服務，構建差異化優勢。
+      </p>
+    </details>
+    <!-- Overall Plan Summary End -->
+
+    <div class="footer-note">
+      <p>
+        <strong>聲明：</strong>
+        本材料僅供 樂嘉豪 (Maximilian LOK) 與 澳門通公司
+        進行招聘用途以及技術交流與模型設計參考。其實體內容基於公開資訊和個人理解，基於
+        AI
+        代理協作完成，並不代表任何實際的商業計劃或建議。內容僅供參考，並不構成任何法律或商業建議。請勿將本方案用於商業用途或作為任何商業決策的依據。
+      </p>
+      <p></p>
+    </div>
+    <!--  -->
+  </body>
+</html>
